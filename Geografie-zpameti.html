@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Geografie zpaměti</title>
+<meta name="description" content="Krátké kapitoly geografie: přečíst, vybavit zpaměti, porovnat a exportovat odpovědi.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232955d6'/%3E%3Cpath d='M7 8h7l2 2 2-2h7v16h-7l-2 2-2-2H7zm9 2v16' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:light;--ink:#222b38;--muted:#637083;--line:#e1e6ed;--blue:#2955d6;--pale:#eef3ff;--bg:#f7f8fa}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #8aabff;outline-offset:3px}button{border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink);padding:10px 17px;font-size:15px;font-weight:600;line-height:1.35;min-height:44px}button:hover{background:#f1f4f9}button.primary{background:var(--blue);color:#fff;border-color:var(--blue)}button.primary:hover{background:#2146b2}button.text-button{background:transparent;border-color:transparent;color:var(--muted)}button svg{width:18px;height:18px;vertical-align:-4px;margin-right:7px}svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.topbar{background:#fff;border-bottom:1px solid var(--line);min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 30px}.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:36px;height:36px;display:grid;place-items:center;background:var(--blue);color:#fff;border-radius:7px}.brand-mark svg{width:21px;height:21px}.brand strong{font-size:19px;letter-spacing:-.4px}.brand-sub{color:var(--muted);border-left:1px solid var(--line);margin-left:8px;padding-left:20px;font-size:15px}.top-actions{display:flex;align-items:center;gap:18px}.save-status{font-size:13px;color:var(--muted)}.shell{max-width:1560px;margin:0 auto;display:grid;grid-template-columns:265px minmax(0,1fr);min-height:calc(100vh - 78px)}.sidebar{background:#fff;border-right:1px solid var(--line);padding:28px 17px;display:flex;flex-direction:column;gap:24px;position:sticky;top:0;align-self:start;height:calc(100vh - 78px);min-height:650px;overflow:auto}.eyebrow{font-size:12px;font-weight:650;letter-spacing:1.5px;color:var(--muted);margin:0 13px 15px}.chapter-nav{display:flex;flex-direction:column;gap:4px}.chapter-link{text-align:left;border:0;background:transparent;font-size:14px;font-weight:500;display:flex;align-items:center;gap:12px;padding:12px;line-height:1.45;border-radius:7px}.chapter-link.current{background:var(--pale);color:var(--blue);font-weight:650}.chapter-num{width:23px;flex-shrink:0;font-variant-numeric:tabular-nums;color:#788394;font-size:13px}.chapter-link.current .chapter-num{color:var(--blue)}.chapter-num svg{width:17px;height:17px;margin:0;color:var(--blue)}.chapter-text{flex:1}.dot{width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}.sidebar-bottom{margin-top:auto;padding:10px 12px 0}.progress-text{display:flex;justify-content:space-between;gap:15px;font-size:14px;margin-bottom:9px}.sidebar-bottom p{font-size:13px;color:var(--muted);margin:12px 0 0}progress{display:block;width:100%;height:5px;border:0;border-radius:5px;overflow:hidden;appearance:none;background:#e6eaf1}progress::-webkit-progress-bar{background:#e6eaf1}progress::-webkit-progress-value{background:var(--blue)}progress::-moz-progress-bar{background:var(--blue)}.main{min-width:0;padding:32px clamp(20px,4vw,64px) 60px}.workspace{max-width:820px;margin:auto}.workspace.wide{max-width:1100px}.steps{display:flex;list-style:none;gap:0;padding:0;margin:0 0 33px;border-bottom:1px solid var(--line)}.steps li{flex:1;display:flex;gap:9px;align-items:center;padding:0 8px 17px;color:#747f8e;font-size:14px;border-bottom:2px solid transparent;margin-bottom:-1px}.steps li.active{color:var(--blue);border-color:var(--blue);font-weight:650}.step-num{height:23px;width:23px;border:1px solid #cdd4de;border-radius:50%;display:grid;place-items:center;font-size:12px}.active .step-num{background:var(--blue);color:#fff;border-color:var(--blue)}.passed .step-num{color:var(--blue);border-color:#b8c9fa}.counter{color:var(--blue);font-weight:600;font-size:12px;letter-spacing:1.25px;text-transform:uppercase}h1{font-size:clamp(25px,3vw,33px);line-height:1.25;letter-spacing:-.8px;margin:10px 0 12px;font-weight:680}h1:focus{outline:none}.intro{color:var(--muted);line-height:1.65;margin:0 0 25px;max-width:700px}.paper{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px 32px}.notes section+section{margin-top:23px}.notes h3{font-size:16px;line-height:1.45;margin:0 0 9px;font-weight:680}.notes ul{padding-left:19px;margin:0}.notes li{padding-left:3px;margin:7px 0;line-height:1.7}.notes li::marker{color:#8995a5}.clarification{border-top:1px solid var(--line);margin-top:22px;padding-top:16px;font-size:14px;color:var(--muted)}summary{cursor:pointer;font-weight:600;min-height:26px}.clarification p{margin:9px 0 0;line-height:1.65}.actions{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:22px}.hint{color:var(--muted);font-size:13px}.answer-paper{background:white;border:1px solid var(--line);border-radius:10px;overflow:hidden}.paper-label{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding:15px 22px;font-size:14px;font-weight:600}.paper-label span{color:var(--muted);font-size:13px;font-weight:400}textarea{width:100%;resize:vertical;color:var(--ink);background:#fff;font-size:16px;line-height:1.75;padding:19px;border:1px solid var(--line);border-radius:7px;outline:none}textarea:focus{border-color:var(--blue);box-shadow:0 0 0 2px #2955d61a}textarea::placeholder{color:#8a94a3}.recall-input{min-height:350px;border:0;display:block;border-radius:0;padding:23px;resize:vertical}.recall-input:focus{box-shadow:inset 0 0 0 2px #b3c6fc}.compare-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:white}.compare-col{min-width:0}.compare-col+.compare-col{border-left:1px solid var(--line)}.compare-heading{margin:0;padding:16px 22px;background:#fafbfc;border-bottom:1px solid var(--line);font-size:15px;font-weight:650;display:flex;justify-content:space-between;gap:8px}.compare-heading span{font-size:12px;color:var(--muted);font-weight:400}.compare-body{padding:23px;overflow-wrap:anywhere}.answer-readonly{white-space:pre-wrap;line-height:1.75;min-height:160px}.empty{color:#7d8796;font-style:italic}.corrections{margin-top:23px}.corrections label{display:block;font-weight:600;font-size:15px;margin-bottom:10px}.corrections label span{font-weight:400;color:var(--muted);font-size:14px}.corrections textarea{min-height:100px}.corrections p{font-size:13px;color:var(--muted);margin:7px 0}.warning{padding:12px 18px;background:#fff6e8;border:1px solid #e8c899;border-radius:7px;color:#765320;font-size:14px;margin-bottom:18px}.mobile-menu{display:none}.finish{padding:20px 0;max-width:700px}.finish p{color:var(--muted)}.finish-list{margin:28px 0;display:grid;gap:8px}.finish-row{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--line);padding:12px 15px;border-radius:7px;text-align:left}.finish-row span:last-child{margin-left:auto;color:var(--muted);font-size:13px}.finish .actions{justify-content:flex-start;flex-wrap:wrap}dialog{border:1px solid var(--line);border-radius:12px;padding:25px;max-height:90vh;max-width:720px;width:calc(100% - 28px);color:var(--ink);box-shadow:0 15px 65px #17243d30}dialog::backdrop{background:#18243866}dialog h2{font-size:23px;letter-spacing:-.5px;margin:0 32px 8px 0}dialog p{font-size:15px;color:var(--muted);margin:0 0 18px}dialog .close{position:absolute;top:12px;right:12px;width:40px;padding:0;background:transparent;border:0;font-size:24px;color:var(--muted)}.export-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}.export-preview{height:250px;font-size:14px;line-height:1.6;resize:vertical}.export-label{display:block;margin:14px 0 7px;font-size:14px;font-weight:600}.feedback{display:block;min-height:24px;font-size:13px;color:var(--blue);margin-top:5px}.mobile-dialog{max-width:400px}.mobile-dialog .chapter-nav{margin-top:20px}.footnote{font-size:12px;color:var(--muted);margin:30px 0 0;text-align:center}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+@media(min-width:1500px){.shell{border-left:1px solid var(--line);border-right:1px solid var(--line)}}
+@media(max-width:1050px){.shell{grid-template-columns:225px minmax(0,1fr)}.sidebar{padding-left:10px;padding-right:10px}.main{padding:28px 24px 45px}.brand-sub{display:none}.save-status{max-width:170px;text-align:right;font-size:12px}.paper{padding:23px}.compare-body{padding:17px}.compare-heading{padding:14px 17px}.compare-heading span{display:none}}
+@media(max-width:740px){.shell{display:block}.sidebar{display:none}.topbar{padding:12px 16px;gap:10px;min-height:72px}.brand{gap:9px}.brand strong{font-size:17px}.brand-mark{height:32px;width:32px}.top-actions{gap:8px}.save-status{display:none}.mobile-menu{display:inline-block;padding:8px 10px;min-height:40px}.mobile-menu svg{margin:0}.topbar button{font-size:14px;padding:9px 12px}.main{padding:23px 16px 40px}.steps{margin-bottom:26px}.steps li{padding:0 2px 14px;gap:7px;font-size:13px}.paper{padding:21px}.intro{font-size:15px}.actions{align-items:stretch;flex-wrap:wrap}.actions>.primary{flex:1;min-width:210px}.hint{align-self:center}.recall-input{min-height:310px}.compare-body{padding:14px 11px}.compare-heading{padding:13px 11px;font-size:14px}.compare-grid .notes{font-size:15px}.compare-grid .notes h3{font-size:15px}.compare-grid .notes ul{padding-left:15px}.compare-grid .notes li{padding-left:0}.compare-grid .notes section+section{margin-top:20px}.answer-readonly{font-size:15px}.compare-grid .clarification{font-size:13px}.counter{font-size:11px}dialog{padding:23px 18px}.export-actions button{flex:1}.export-preview{height:220px}.finish-row{font-size:14px}.finish-row span:last-child{font-size:12px}.footnote{text-align:left}}
+@media(prefers-reduced-motion:no-preference){button{transition:background .12s}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand"><div class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h6l3 2 3-2h6v15h-6l-3 2-3-2H3zM12 6v15"/></svg></div><strong>Geografie zpaměti</strong><span class="brand-sub">Vesmír · Země · Měsíc</span></div><div class="top-actions"><span class="save-status" id="save-status" role="status">Koncept v tomto prohlížeči</span><button class="mobile-menu" data-action="menu" aria-label="Otevřít kapitoly"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><button data-action="export"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></svg>Export</button></div></header>
+<div class="shell"><aside class="sidebar"><div><p class="eyebrow">KAPITOLY</p><nav class="chapter-nav" id="chapter-nav" aria-label="Kapitoly"></nav></div><div class="sidebar-bottom"><div class="progress-text"><span>Porovnané kapitoly</span><strong id="progress-count">0 / 11</strong></div><progress id="progress" value="0" max="11" aria-label="Postup procvičování"></progress><p>Výsledky můžeš kdykoliv exportovat, i když skončíš v půlce.</p></div></aside><main class="main" id="main"><div id="warning" class="warning" role="alert" hidden></div><div class="workspace" id="workspace"></div></main></div>
+<dialog id="export-dialog" aria-labelledby="export-title"><button class="close" data-action="close-export" aria-label="Zavřít export">×</button><h2 id="export-title">Export pro AI</h2><p>Učivo, všechny tvoje pokusy a oddělená doplnění. Zahrnuje i právě rozepsanou odpověď.</p><div class="export-actions"><button class="primary" data-action="copy">Kopírovat pro AI</button><button data-action="download">Stáhnout .txt</button></div><output id="export-feedback" class="feedback" aria-live="polite"></output><label class="export-label" for="export-text">Náhled exportu</label><textarea id="export-text" class="export-preview" readonly spellcheck="false"></textarea></dialog>
+<dialog id="chapters-dialog" class="mobile-dialog" aria-labelledby="chapters-title"><button class="close" data-action="close-menu" aria-label="Zavřít kapitoly">×</button><h2 id="chapters-title">Kapitoly</h2><nav class="chapter-nav" id="mobile-chapter-nav" aria-label="Výběr kapitoly"></nav></dialog>
+<script type="application/json" id="chapter-data">[
+  {
+    "id": "vesmir",
+    "title": "Geografie a vesmír",
+    "short": "Geografie a vesmír",
+    "sections": [
+      [
+        "Geografie",
+        [
+          "Geo = Země, grafos = popis. Geografie se oddělila od filozofie ve starém Řecku. Řekové znali hvězdy a někteří už věděli, že je Země kulatá."
+        ]
+      ],
+      [
+        "Uspořádání vesmíru",
+        [
+          "Vesmír se rozpíná. Čím vzdálenější galaxii pozorujeme, tím starší obraz vidíme: světlo k nám letí déle.",
+          "Ve vesmíru vznikají galaxie; mezi hvězdami je mezihvězdný prostor.",
+          "Vesmír → galaxie → naše Galaxie (Mléčná dráha). Patří do ní hvězdy včetně Slunce, kolem kterého obíhá Země a ostatní tělesa Sluneční soustavy."
+        ]
+      ],
+      [
+        "Hvězdy a vzdálenosti",
+        [
+          "Slunce je hvězda a září celým povrchem. Energii získává termonukleární fúzí: jádra vodíku (H) se slučují na helium (He), část hmotnosti se mění na energii a záření.",
+          "Planety vidíme díky odraženému světlu; nesvítí vlastním světlem jako hvězdy.",
+          "Proxima Centauri: přibližně 4 světelné roky od nás. Světelný rok je jednotka vzdálenosti.",
+          "1 AU ≈ 150 milionů km ≈ 8 světelných minut: přibližná střední vzdálenost Země od Slunce."
+        ]
+      ]
+    ],
+    "clarification": "Značka H + H → He je v zápisku jen zkratka pro slučování jader; není to úplná rovnice reakce."
+  },
+  {
+    "id": "planety",
+    "title": "Rozdělení planet",
+    "short": "Rozdělení planet",
+    "sections": [
+      [
+        "Pořadí od Slunce",
+        [
+          "Merkur → Venuše → Země → Mars → Jupiter → Saturn → Uran → Neptun."
+        ]
+      ],
+      [
+        "Vnitřní planety = planety zemského typu",
+        [
+          "Merkur, Venuše, Země a Mars. Jsou menší, kamenné, s pevným povrchem a blíže ke Slunci.",
+          "Čím blíže planeta obíhá ke Slunci, tím vyšší má průměrnou oběžnou rychlost. Nejrychleji obíhá Merkur."
+        ]
+      ],
+      [
+        "Vnější planety",
+        [
+          "Plynní obři: Jupiter a Saturn. Ledoví obři: Uran a Neptun.",
+          "Jsou velké, mají mnoho měsíců, prstence a mohutné atmosféry. Směrem dovnitř přechází jejich obal do hustších vrstev až k jádru.",
+          "Všechny čtyři obří planety mají prstence, nejvýraznější jsou u Saturnu."
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "vnitrni",
+    "title": "Merkur, Venuše a Mars",
+    "short": "Merkur, Venuše a Mars",
+    "sections": [
+      [
+        "Merkur",
+        [
+          "Nejmenší planeta a nejbližší ke Slunci. Nejrychleji obíhá.",
+          "Má velmi starý, kráterovaný povrch podobný Měsíci; neprobíhá na něm výrazná eroze větrem a vodou."
+        ]
+      ],
+      [
+        "Venuše",
+        [
+          "Nejteplejší planeta: asi 460 °C. Velmi hustá atmosféra s vysokým obsahem CO₂ způsobuje silný skleníkový jev.",
+          "Tlak na povrchu je asi 90× vyšší než na Zemi. Oblaka odrážejí velké množství slunečního záření.",
+          "Večernice i Jitřenka = Venuše. Její dráha leží mezi dráhou Země a Sluncem.",
+          "Na pracovním listu: „nejbližší k Zemi“ = Venuše (při největším možném přiblížení)."
+        ]
+      ],
+      [
+        "Mars",
+        [
+          "Červený kvůli oxidům železa (Fe). Název podle římského boha války připomíná krev.",
+          "Má polární ledové čepičky. Oblast Tharsis je známá obrovskými sopkami.",
+          "Olympus Mons: obrovská sopka, v zápisku asi 27 km vysoká. Na Marsu jsou největší sopky Sluneční soustavy."
+        ]
+      ]
+    ],
+    "clarification": "V původním zápisku je u Venuše „nejblíž ke Slunci“ — správně je Merkur. Venuše není Zemi nejbližší v každém okamžiku. Výška Olympus Mons se liší podle výškového základu; běžně se uvádí přibližně 22 km nad referenční úrovní."
+  },
+  {
+    "id": "vnejsi",
+    "title": "Jupiter, Saturn, Uran a Neptun",
+    "short": "Jupiter až Neptun",
+    "sections": [
+      [
+        "Jupiter",
+        [
+          "Největší planeta; plynný obr.",
+          "Galileovské měsíce: Io, Europa, Ganymed a Callisto.",
+          "Europa má ledový povrch; pod ledem je podle vědeckých důkazů oceán."
+        ]
+      ],
+      [
+        "Saturn",
+        [
+          "Plynný obr s nejvýraznějšími prstenci."
+        ]
+      ],
+      [
+        "Uran",
+        [
+          "Ledový obr, objeven roku 1781.",
+          "Rotuje „vleže“: má silně nakloněnou osu. Možným vysvětlením je dávná srážka."
+        ]
+      ],
+      [
+        "Neptun",
+        [
+          "Ledový obr, osmá planeta od Slunce."
+        ]
+      ]
+    ],
+    "clarification": "Poznámka o „rotaci vleže“ byla v zápisku u Jupiteru. Patří k Uranu. Europa a Galileovské měsíce patří k Jupiteru."
+  },
+  {
+    "id": "meteority",
+    "title": "Asteroidy, meteory a meteority",
+    "short": "Asteroidy a meteority",
+    "sections": [
+      [
+        "Rozlišení pojmů",
+        [
+          "Asteroid = planetka obíhající ve Sluneční soustavě. Hlavní pás asteroidů je mezi Marsem a Jupiterem.",
+          "Meteor = světelný úkaz při průletu tělesa atmosférou; většina materiálu se obvykle zničí.",
+          "Meteorit = zbytek tělesa, který dopadne na zemský povrch. Pomáhá studovat materiál těles Sluneční soustavy.",
+          "Kovové meteority: Fe + Ni. Kamenné meteority: křemičitany, podobné materiálu zemského pláště."
+        ]
+      ],
+      [
+        "Srážky a krátery",
+        [
+          "Srážky mohou souviset s velkými vymíráními. Největší hromadné vymírání nastalo na přelomu prvohor a druhohor.",
+          "Yucatán: kráter Chicxulub překrytý usazeninami, spojený s vymřením neptačích dinosaurů na konci druhohor.",
+          "Rieský kráter: Bavorsko.",
+          "Zemský povrch se mění, takže staré krátery často zanikají nebo jsou zakryté. Lépe se dochovávají mladší.",
+          "Tunguzská událost: začátek 20. století (1908), Rusko. Výbuch kosmického tělesa v atmosféře."
+        ]
+      ]
+    ],
+    "clarification": "Vymírání na přelomu prvohor a druhohor je jiná událost než vymírání dinosaurů. Nelze všechna hromadná vymírání automaticky připsat dopadu tělesa."
+  },
+  {
+    "id": "komety",
+    "title": "Komety",
+    "short": "Komety",
+    "sections": [
+      [
+        "Stavba a dráha",
+        [
+          "Jádro komety tvoří především prach a led.",
+          "Komety často obíhají po velmi protáhlých eliptických drahách."
+        ]
+      ],
+      [
+        "Přiblížení ke Slunci",
+        [
+          "Led sublimuje: přechází přímo z pevného skupenství do plynného.",
+          "Kolem jádra vzniká koma (plynný a prachový obal) a ohon.",
+          "Ohon směřuje obecně od Slunce. Nemusí mířit za kometu ve směru jejího letu.",
+          "Čím je kometa blíže Slunci, tím bývá její aktivita a ohon výraznější."
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "zeme",
+    "title": "Čím je Země zvláštní",
+    "short": "Země",
+    "sections": [
+      [
+        "Zemské sféry",
+        [
+          "Hydrosféra: voda, zejména kapalná a tekoucí voda na povrchu.",
+          "Biosféra: život.",
+          "Atmosféra: přibližně 78 % N₂ a 21 % O₂. Kyslík v atmosféře souvisí s fotosyntézou.",
+          "Litosféra: pevný obal rozdělený na pohybující se desky; pohyby kontinentů."
+        ]
+      ],
+      [
+        "Zemská osa a Měsíc",
+        [
+          "Země má nakloněnou rotační osu. Náklon spolu s oběhem kolem Slunce způsobuje střídání ročních období.",
+          "Zápisek spojuje náklon osy s dávnou srážkou s jiným tělesem.",
+          "Země má vzhledem ke své velikosti poměrně velký Měsíc; tvoří s ním gravitačně propojenou soustavu."
+        ]
+      ]
+    ],
+    "clarification": "Pátý bod odlišností Země je v originálu hůře čitelný a souvisí se systémem Země–Měsíc. Jeho přesné znění není známé. Souvislost náklonu osy s jedinou srážkou je ve školním zápisku zjednodušená."
+  },
+  {
+    "id": "mesic-povrch",
+    "title": "Měsíc: vznik a povrch",
+    "short": "Měsíc: vznik a povrch",
+    "sections": [
+      [
+        "Vznik",
+        [
+          "Měsíc je v poměru k Zemi velký.",
+          "Pravděpodobně vznikl po srážce mladé Země s tělesem Theia. Vyvržený materiál se zformoval do Měsíce.",
+          "Zápisek spojuje tuto srážku také s náklonem rotační osy Země."
+        ]
+      ],
+      [
+        "Složení a povrch",
+        [
+          "Prvky: Fe (železo), Ca (vápník), Mg (hořčík), Si (křemík), O (kyslík) a další.",
+          "Měsíční moře: tmavé čedičové oblasti. Nejde o vodní moře.",
+          "Další povrchové útvary: pevniny a dopadové krátery."
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "mesic-pohyby",
+    "title": "Měsíc: pohyby a fáze",
+    "short": "Měsíc: pohyby a fáze",
+    "sections": [
+      [
+        "Rotace a oběh",
+        [
+          "Rotace = otáčení kolem vlastní osy. Oběh = pohyb kolem jiného tělesa.",
+          "Vázaná rotace Měsíce: jeho otočení kolem vlastní osy trvá stejně dlouho jako oběh kolem Země. Proto vidíme přibližně stále stejnou stranu.",
+          "Vznik vázané rotace souvisí s dlouhodobým gravitačním a slapovým působením Země a Měsíce."
+        ]
+      ],
+      [
+        "Fáze a doby oběhu",
+        [
+          "Fáze Měsíce: nov, první čtvrť, úplněk a poslední čtvrť. Mění se viditelná část osvětlené poloviny Měsíce.",
+          "Siderický měsíc: oběh kolem Země vzhledem ke hvězdám ≈ 27,32 dne.",
+          "Synodický měsíc: od stejné fáze ke stejné fázi ≈ 29,5 dne."
+        ]
+      ],
+      [
+        "Související jevy",
+        [
+          "Zatmění Slunce a Měsíce. Slapové jevy způsobuje hlavně Měsíc, částečně i Slunce."
+        ]
+      ]
+    ],
+    "clarification": "Měsíc se opravdu otáčí. Jeho vázaná rotace neznamená stejnou rychlost otáčení jako u Země. Běžné fáze Měsíce nejsou způsobené zemským stínem."
+  },
+  {
+    "id": "zatmeni",
+    "title": "Zatmění a barycentrum",
+    "short": "Zatmění a barycentrum",
+    "sections": [
+      [
+        "Zatmění Měsíce",
+        [
+          "Slunce → Země → Měsíc.",
+          "Měsíc vstupuje do zemského stínu."
+        ]
+      ],
+      [
+        "Zatmění Slunce",
+        [
+          "Slunce → Měsíc → Země.",
+          "Měsíc zakrývá Slunce a na Zemi vzniká stín a polostín."
+        ]
+      ],
+      [
+        "Barycentrum",
+        [
+          "Společné těžiště soustavy Země–Měsíc.",
+          "Leží uvnitř Země, podle zápisku asi 1 700 km pod povrchem.",
+          "Země i Měsíc se pohybují kolem společného barycentra."
+        ]
+      ]
+    ]
+  },
+  {
+    "id": "priliv",
+    "title": "Příliv, odliv a slapové jevy",
+    "short": "Příliv a odliv",
+    "sections": [
+      [
+        "Princip a střídání",
+        [
+          "Slapové jevy = dmutí. Souvisí s gravitačním působením a v popisu obíhající soustavy i s odstředivým účinkem systému Země–Měsíc. Výšku přílivu ovlivňuje také Slunce.",
+          "Příliv vzniká na dvou protilehlých stranách Země.",
+          "Příliv → odliv: přibližně 6 hodin. Příliv → další příliv: přibližně 12 hodin."
+        ]
+      ],
+      [
+        "Skočný × hluchý příliv",
+        [
+          "Skočný příliv: větší rozdíl hladin. Slapové účinky Slunce a Měsíce se zesilují, když jsou tělesa přibližně v přímce (nov a úplněk).",
+          "Hluchý příliv: menší rozdíl hladin. Směry ke Slunci a Měsíci jsou vůči sobě přibližně kolmé; účinky se částečně vyrovnávají (první a poslední čtvrť)."
+        ]
+      ],
+      [
+        "Pobřeží a příklady",
+        [
+          "Velikost přílivu závisí na tvaru pobřeží, mořského dna, zátok a ústí řek.",
+          "Pororoca: asi 3m přílivová vlna na Amazonce; postupuje proti proudu do vnitrozemí.",
+          "Bay of Fundy: rozdíl hladin až kolem 18 m. Normandie: kolem 15 m."
+        ]
+      ]
+    ],
+    "clarification": "Časy 6 a 12 hodin jsou školní zaokrouhlení. V běžném půldenním režimu jde asi o 6 h 12 min a 12 h 25 min; průběh se místně liší. Uvedené výšky jsou orientační místní extrémy."
+  }
+]</script>
+<script>
+'use strict';
+const chapters=JSON.parse(document.getElementById('chapter-data').textContent);
+const STORAGE_KEY='geografie-recall-clean-v1';
+const checkIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>';
+const $=id=>document.getElementById(id);
+const escapeHTML=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let state={version:1,index:0,finished:false,attempts:{},savedAt:null};
+let storageBlocked=false,storageError=false,exportValue='';
+function validState(s){return s&&s.version===1&&Number.isInteger(s.index)&&s.index>=0&&s.index<chapters.length&&typeof s.finished==='boolean'&&s.attempts&&typeof s.attempts==='object'&&!Array.isArray(s.attempts)&&Object.entries(s.attempts).every(([id,arr])=>chapters.some(c=>c.id===id)&&Array.isArray(arr)&&arr.every(a=>a&&typeof a.answer==='string'&&typeof a.notes==='string'&&['reading','recall','compare'].includes(a.phase)&&typeof a.startedAt==='string'&&(a.comparedAt===null||typeof a.comparedAt==='string')));}
+try{const raw=localStorage.getItem(STORAGE_KEY);if(raw){const loaded=JSON.parse(raw);if(validState(loaded))state=loaded;else throw Error('invalid draft');}}catch(e){storageError=true;}
+function showWarning(message){$('warning').textContent=message;$('warning').hidden=!message;}
+function persist(){state.savedAt=new Date().toISOString();if(storageBlocked)return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));$('save-status').textContent='Koncept uložen v tomto prohlížeči';storageError=false;}catch(e){storageError=true;$('save-status').textContent='Koncept se nepodařilo uložit';showWarning('Prohlížeč nemůže uložit koncept. Tvoje odpovědi zůstávají v tomto okně; před zavřením je exportuj.');}}
+function currentChapter(){return chapters[state.index];}
+function currentAttempt(id=currentChapter().id){return (state.attempts[id]||[]).at(-1);}
+function newAttempt(){return {startedAt:new Date().toISOString(),phase:'reading',answer:'',notes:'',comparedAt:null};}
+function ensureAttempt(){const id=currentChapter().id;if(!state.attempts[id])state.attempts[id]=[];if(!state.attempts[id].length)state.attempts[id].push(newAttempt());return currentAttempt();}
+function completed(id){return (state.attempts[id]||[]).some(a=>a.comparedAt!==null);}
+function completedCount(){return chapters.filter(c=>completed(c.id)).length;}
+function words(text){return (text.trim().match(/\S+/g)||[]).length;}
+function notesHTML(c){return '<div class="notes">'+c.sections.map(([title,points])=>'<section><h3>'+escapeHTML(title)+'</h3><ul>'+points.map(p=>'<li>'+escapeHTML(p)+'</li>').join('')+'</ul></section>').join('')+(c.clarification?'<details class="clarification"><summary>Upřesnění zápisku</summary><p>'+escapeHTML(c.clarification)+'</p></details>':'')+'</div>';}
+function chapterPlain(c){return c.sections.map(([title,points])=>title+'\n'+points.map(p=>'• '+p).join('\n')).join('\n\n')+(c.clarification?'\n\nUPŘESNĚNÍ: '+c.clarification:'');}
+function renderNav(){const html=chapters.map((c,i)=>{const done=completed(c.id),a=currentAttempt(c.id);return '<button class="chapter-link '+(state.index===i&&!state.finished?'current':'')+'" data-chapter="'+i+'" '+(state.index===i&&!state.finished?'aria-current="page"':'')+'><span class="chapter-num">'+(done?checkIcon+'<span class="sr-only">Porovnáno</span>':String(i+1).padStart(2,'0'))+'</span><span class="chapter-text">'+escapeHTML(c.short)+'</span>'+(a&&a.phase==='recall'?'<span class="dot" aria-label="Rozepsáno"></span>':'')+'</button>';}).join('');$('chapter-nav').innerHTML=html;$('mobile-chapter-nav').innerHTML=html;$('progress-count').textContent=completedCount()+' / '+chapters.length;$('progress').max=chapters.length;$('progress').value=completedCount();}
+function render(focus=true){renderNav();const c=currentChapter(),a=currentAttempt(),phase=a?a.phase:'reading';$('workspace').className='workspace'+(phase==='compare'&&!state.finished?' wide':'');
+if(state.finished){const count=completedCount();$('workspace').innerHTML='<section class="finish"><span class="counter">Konec procvičování</span><h1 id="page-title" tabindex="-1">'+(count===chapters.length?'Všechny kapitoly prošlé.':'Došel jsi na konec.')+'</h1><p>Porovnáno <strong>'+count+' z '+chapters.length+'</strong> kapitol. Exportuj své odpovědi a pošli je AI k vyhodnocení.</p><div class="actions"><button class="primary" data-action="export">Exportovat výsledky</button><button data-action="return">Vrátit se ke kapitolám</button></div><div class="finish-list">'+chapters.map((c,i)=>'<button class="finish-row" data-chapter="'+i+'"><span class="chapter-num">'+String(i+1).padStart(2,'0')+'</span><strong>'+escapeHTML(c.short)+'</strong><span>'+(completed(c.id)?'Porovnáno':(currentAttempt(c.id)?.answer?'Rozepsáno':'Neprocvičeno'))+'</span></button>').join('')+'</div></section>';}
+else{const phaseIndex=['reading','recall','compare'].indexOf(phase);const stepper='<ol class="steps" aria-label="Kroky procvičování">'+['Čtení','Zpaměti','Porovnání'].map((s,i)=>'<li class="'+(i===phaseIndex?'active':i<phaseIndex?'passed':'')+'" '+(i===phaseIndex?'aria-current="step"':'')+'><span class="step-num">'+(i<phaseIndex?'✓':i+1)+'</span>'+s+'</li>').join('')+'</ol>';
+const intro=phase==='reading'?'Přečti si kapitolu. Až budeš připravený, skryj ji a napiš, co si pamatuješ.':phase==='recall'?'Zápisek je skrytý. Napiš co nejvíc vlastními slovy. Na pořadí ani přesném znění nezáleží.':'Porovnej svou odpověď se zápiskem. Chybějící věci si můžeš poznamenat zvlášť.';
+let content=stepper+'<span class="counter">Kapitola '+String(state.index+1).padStart(2,'0')+' / '+String(chapters.length).padStart(2,'0')+'</span><h1 id="page-title" tabindex="-1">'+escapeHTML(c.title)+'</h1><p class="intro">'+intro+'</p>';
+if(phase==='reading'){content+='<article class="paper" aria-label="Zápisek ke čtení">'+notesHTML(c)+'</article><div class="actions"><span class="hint">Bez časového limitu.</span><button class="primary" data-action="recall">Skrýt zápisek a psát</button></div>';}
+if(phase==='recall'){content+='<div class="answer-paper"><div class="paper-label"><label for="answer">Moje odpověď zpaměti</label><span id="word-count">'+words(a.answer)+' slov</span></div><textarea id="answer" class="recall-input" placeholder="Začni tím, co si vybavíš…" maxlength="100000">'+escapeHTML(a.answer)+'</textarea></div><div class="actions"><span class="hint">Můžeš exportovat i rozepsanou odpověď.</span><button class="primary" data-action="compare">Odkryt a porovnat</button></div>';}
+if(phase==='compare'){content+='<div class="compare-grid"><section class="compare-col"><h2 class="compare-heading">Moje odpověď<span>Zpaměti</span></h2><div class="compare-body answer-readonly">'+(a.answer?escapeHTML(a.answer):'<span class="empty">Odevzdal jsi prázdnou odpověď.</span>')+'</div></section><section class="compare-col"><h2 class="compare-heading">Zápisek<span>Učivo</span></h2><div class="compare-body">'+notesHTML(c)+'</div></section></div><div class="corrections"><label for="corrections">Co jsem vynechal nebo popletl <span>(volitelné)</span></label><textarea id="corrections" maxlength="50000" placeholder="Pár bodů, ke kterým se chci vrátit…">'+escapeHTML(a.notes)+'</textarea><p>Původní odpověď zůstává zachovaná. Toto doplnění je v exportu zvlášť.</p></div><div class="actions"><button class="text-button" data-action="repeat">Zopakovat kapitolu</button><button class="primary" data-action="next">'+(state.index===chapters.length-1?'Dokončit procvičování':'Další kapitola')+'</button></div>';}
+$('workspace').innerHTML=content;}
+if(focus){window.scrollTo({top:0,behavior:'instant'});requestAnimationFrame(()=>{const target=$('answer')||$('page-title');if(target)target.focus({preventScroll:true});});}}
+function navigate(index){if(!Number.isInteger(index)||index<0||index>=chapters.length)throw Error('Neplatná kapitola.');state.index=index;state.finished=false;persist();render();$('chapters-dialog').close();}
+function startRecall(){const a=ensureAttempt();if(a.phase!=='reading')return;a.phase='recall';persist();render();}
+function compare(){const a=ensureAttempt();if(a.phase!=='recall')return;a.phase='compare';a.comparedAt=new Date().toISOString();persist();render();}
+function repeat(){const id=currentChapter().id;if(!state.attempts[id])state.attempts[id]=[];state.attempts[id].push(newAttempt());state.finished=false;persist();render();}
+function next(){if(state.index===chapters.length-1){state.finished=true;persist();render();}else navigate(state.index+1);}
+function buildExport(){const chunks=['GEOGRAFIE — VÝSLEDKY ACTIVE RECALL','Export: '+new Date().toLocaleString('cs-CZ'),'Porovnané kapitoly: '+completedCount()+' / '+chapters.length,'\nZADÁNÍ PRO AI','Porovnej moje odpovědi zpaměti s přiloženým učivem. U každé procvičené kapitoly označ správné informace, chyby a chybějící body. Hodnoť význam, ne přesné formulace. Doplnění po odkrytí nepočítej jako vybavení zpaměti. Rozepsanou odpověď ber jako neúplnou; neprocvičené kapitoly nehodnoť jako špatné. Nakonec napiš krátký seznam toho, co si mám zopakovat.'];
+chapters.forEach((c,i)=>{const list=(state.attempts[c.id]||[]).filter(a=>a.answer.trim()||a.comparedAt);chunks.push('\n'+'='.repeat(42)+'\n'+(i+1)+'. '+c.title);if(!list.length){chunks.push('NEPROCVIČENO — bez odevzdané nebo rozepsané odpovědi.');return;}chunks.push('\nUČIVO\n'+chapterPlain(c));list.forEach((a,n)=>{chunks.push('\nPOKUS '+(n+1)+' — '+(a.comparedAt?'ODEVZDÁNO; zápisek byl odkryt':'ROZEPSÁNO; zápisek zatím nebyl odkryt'),'MOJE ODPOVĚĎ ZPAMĚTI\n'+(a.answer||'[Prázdná odevzdaná odpověď.]'));if(a.notes.trim())chunks.push('DOPLNĚNÍ PO ODKRYTÍ — nehodnotit jako vybavení\n'+a.notes);});});return chunks.join('\n');}
+function openExport(){exportValue=buildExport();$('export-text').value=exportValue;$('export-feedback').textContent=completedCount()+' z '+chapters.length+' kapitol porovnáno. Rozepsané odpovědi jsou zahrnuté.';$('export-dialog').showModal();}
+async function copyExport(){try{await navigator.clipboard.writeText(exportValue);$('export-feedback').textContent='Zkopírováno. Teď vlož text do AI.';}catch(e){$('export-text').focus();$('export-text').select();$('export-feedback').textContent='Text je vybraný. Zkopíruj ho ručně (Ctrl+C nebo nabídka Kopírovat).';}}
+function downloadExport(){const blob=new Blob(['\uFEFF',exportValue],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='geografie-odpovedi-'+new Date().toISOString().slice(0,10)+'.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('export-feedback').textContent='Export je připravený ke stažení.';}
+document.addEventListener('click',e=>{const chapterButton=e.target.closest('[data-chapter]');if(chapterButton){navigate(Number(chapterButton.dataset.chapter));return;}const button=e.target.closest('[data-action]');if(!button)return;const action=button.dataset.action;const actions={recall:startRecall,compare,repeat,next,export:openExport,copy:copyExport,download:downloadExport,menu:()=>$('chapters-dialog').showModal(),'close-menu':()=>$('chapters-dialog').close(),'close-export':()=>$('export-dialog').close(),return:()=>{const i=chapters.findIndex(c=>!completed(c.id));navigate(i<0?0:i);}};if(actions[action])actions[action]();});
+document.addEventListener('input',e=>{if(e.target.id==='answer'){ensureAttempt().answer=e.target.value;$('word-count').textContent=words(e.target.value)+' slov';persist();}if(e.target.id==='corrections'){ensureAttempt().notes=e.target.value;persist();}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)&&e.target.id==='answer'){e.preventDefault();compare();}});
+window.addEventListener('storage',e=>{if(e.key===STORAGE_KEY&&e.newValue){try{const other=JSON.parse(e.newValue);if(other.savedAt!==state.savedAt){storageBlocked=true;showWarning('Postup se změnil v jiném okně. Odpovědi v tomto okně můžeš exportovat; pro načtení druhého postupu obnov stránku.');$('save-status').textContent='Změna v jiném okně';}}catch{}}});
+window.addEventListener('beforeunload',e=>{if((storageError||storageBlocked)&&Object.values(state.attempts).some(arr=>arr.some(a=>a.answer))){e.preventDefault();e.returnValue='';}});
+render(false);if(storageError)showWarning('Uložený koncept není dostupný. Můžeš pokračovat; výsledky si před zavřením exportuj.');
+if(document.modelContext?.registerTool){const lifecycle=new AbortController();const register=t=>{try{Promise.resolve(document.modelContext.registerTool(t,{signal:lifecycle.signal})).catch(()=>{});}catch{}};register({name:'read_study_results',title:'Přečíst výsledky',description:'Vrátí aktuální odpovědi včetně rozpracovaných pokusů a učiva pro porovnání.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute(input){if(!input||typeof input!=='object'||Object.keys(input).length)throw Error('Nástroj nepřijímá parametry.');return {completed:completedCount(),total:chapters.length,text:buildExport()};}});register({name:'navigate_study_chapter',title:'Otevřít kapitolu',description:'Otevře kapitolu v jejím aktuálním kroku a zachová odpovědi. Neodkrývá zápisek při psaní.',inputSchema:{type:'object',properties:{chapterNumber:{type:'integer',minimum:1,maximum:chapters.length}},required:['chapterNumber'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(input){if(!input||typeof input!=='object'||Object.keys(input).length!==1||!Number.isInteger(input.chapterNumber))throw Error('Zadej číslo kapitoly.');navigate(input.chapterNumber-1);return {chapter:state.index+1,title:currentChapter().title};}});window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true});}
+</script>
+</body>
+</html>
